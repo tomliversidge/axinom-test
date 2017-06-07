@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.0.0
+MinimumVisualStudioVersion = 10.0.0.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axinom.ControlPanel", "Axinom.ControlPanel/Axinom.ControlPanel.csproj", "{C603630C-9366-4C90-9993-7308663633E5}"
+EndProject
+Project("{CE60BA61-FD94-4E6E-83D5-8EC8C2AC986F}") = "Axinom.DataManagement", "Axinom.DataManagement\Axinom.DataManagement.csproj", "{770399FE-D7C0-491F-9B33-C22AD123F0CA}"
+EndProject
+Project("{F341FDDF-F719-47BE-B8FE-D7D89B6AC9C5}") = "Axinom.ControlPanel.Tests", "Axinom.ControlPanel.Tests\Axinom.ControlPanel.Tests.csproj", "{07D9E2FD-0A8D-4F75-8247-AAD4CA1BA3B4}"
+EndProject
+Project("{6CF11158-DD52-499D-9077-8E8E5A5CBD25}") = "Axinom.DataManagement.Tests", "Axinom.DataManagement.Tests\Axinom.DataManagement.Tests.csproj", "{EB5FA7B1-96ED-43F6-947E-07E4537D9393}"
+EndProject
+Project("{DA99DADE-D78D-4F3A-99B0-999ACEC5A323}") = "Axinom.Encryption", "Axinom.Encryption\Axinom.Encryption.csproj", "{7279422F-7959-4FA8-A856-94D3D5D078C0}"
+EndProject
+Project("{9816DA60-12F4-4A8B-A50F-2D2BBCF1D10E}") = "Axinom.Encryption.Tests", "Axinom.Encryption.Tests\Axinom.Encryption.Tests.csproj", "{7BAC3010-2410-4B36-A4BA-7CD4C2FC0506}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C603630C-9366-4C90-9993-7308663633E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C603630C-9366-4C90-9993-7308663633E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C603630C-9366-4C90-9993-7308663633E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C603630C-9366-4C90-9993-7308663633E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{770399FE-D7C0-491F-9B33-C22AD123F0CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770399FE-D7C0-491F-9B33-C22AD123F0CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770399FE-D7C0-491F-9B33-C22AD123F0CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770399FE-D7C0-491F-9B33-C22AD123F0CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D9E2FD-0A8D-4F75-8247-AAD4CA1BA3B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D9E2FD-0A8D-4F75-8247-AAD4CA1BA3B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D9E2FD-0A8D-4F75-8247-AAD4CA1BA3B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D9E2FD-0A8D-4F75-8247-AAD4CA1BA3B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB5FA7B1-96ED-43F6-947E-07E4537D9393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5FA7B1-96ED-43F6-947E-07E4537D9393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5FA7B1-96ED-43F6-947E-07E4537D9393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5FA7B1-96ED-43F6-947E-07E4537D9393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7279422F-7959-4FA8-A856-94D3D5D078C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7279422F-7959-4FA8-A856-94D3D5D078C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7279422F-7959-4FA8-A856-94D3D5D078C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7279422F-7959-4FA8-A856-94D3D5D078C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BAC3010-2410-4B36-A4BA-7CD4C2FC0506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BAC3010-2410-4B36-A4BA-7CD4C2FC0506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BAC3010-2410-4B36-A4BA-7CD4C2FC0506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BAC3010-2410-4B36-A4BA-7CD4C2FC0506}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

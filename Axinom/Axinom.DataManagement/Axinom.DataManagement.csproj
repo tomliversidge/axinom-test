@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Axinom.Domain\Axinom.Domain.csproj">
+      <Project>{1bb38173-e7bb-4021-90c7-ac48cf449b39}</Project>
+      <Name>Axinom.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Axinom.Encryption\Axinom.Encryption.csproj">
+      <Project>{7279422f-7959-4fa8-a856-94d3d5d078c0}</Project>
+      <Name>Axinom.Encryption</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.json" CopyToOutputDirectory="always" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.Development.json" CopyToOutputDirectory="always" />
+  </ItemGroup>
+</Project>

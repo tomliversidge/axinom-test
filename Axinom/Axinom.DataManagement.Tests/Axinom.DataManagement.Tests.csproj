@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.TestHost">
+      <Version>1.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="Shouldly">
+      <Version>2.8.3</Version>
+    </PackageReference>
+    <PackageReference Include="xunit" Version="2.2.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Axinom.DataManagement\Axinom.DataManagement.csproj">
+      <Project>{770399fe-d7c0-491f-9b33-c22ad123f0ca}</Project>
+      <Name>Axinom.DataManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Axinom.Encryption\Axinom.Encryption.csproj">
+      <Project>{7279422f-7959-4fa8-a856-94d3d5d078c0}</Project>
+      <Name>Axinom.Encryption</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
