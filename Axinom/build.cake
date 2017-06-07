@@ -1,10 +1,13 @@
 var target = Argument("target", "Default");
 var configuration = "Debug";
 
+
 Task("Restore")
-    .Does(() => {
-        DotNetCoreRestore();
-    });
+    .Does(() =>
+{
+    NuGetRestore("./Axinom.sln");
+});
+
 Task("Build")
     .IsDependentOn("Restore")
     .Does(() =>

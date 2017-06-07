@@ -15,4 +15,10 @@
       <Name>Axinom.Encryption</Name>
     </ProjectReference>
   </ItemGroup>
+   <ItemGroup>
+    <None Include="appsettings.json" CopyToOutputDirectory="always" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.Development.json" CopyToOutputDirectory="always" />
+  </ItemGroup>
 </Project>
