@@ -16,7 +16,7 @@ Task("Build")
 });
 Task("UnitTest")
     .Does(() => {
-        foreach(var proj in GetFiles("/**/*.Tests.csproj")) {
+        foreach(var proj in GetFiles("./**/*.Tests.csproj")) {
             DotNetCoreTest(proj.ToString(), new DotNetCoreTestSettings {
                 NoBuild = true,
                 Configuration = configuration
