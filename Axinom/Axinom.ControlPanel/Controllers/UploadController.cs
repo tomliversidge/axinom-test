@@ -42,7 +42,7 @@ namespace Axinom.ControlPanel.Controllers
             
             var encrypted = _encrypter.Encrypt(unzipped, _aesKey.Value.Key, _aesKey.Value.IV);
 
-            var response = await SendToDataManagement(encrypted, _dataManagementCredentials.Value.Url, model.Username, model.Password);
+            var response = await SendToDataManagement(encrypted, model.File.FileName, _dataManagementCredentials.Value.Url, model.Username, model.Password);
 
             if (response.IsSuccessStatusCode)
                 return Ok(response.StatusCode);
@@ -75,7 +75,7 @@ namespace Axinom.ControlPanel.Controllers
             return JsonConvert.SerializeObject(folder);
         }
 
-        private static async Task<HttpResponseMessage> SendToDataManagement(byte[] data, string url, string username, string password)
+        private static async Task<HttpResponseMessage> SendToDataManagement(byte[] data, string filename, string url, string username, string password)
         {
             using (var client = new HttpClient())
             {
@@ -83,7 +83,7 @@ namespace Axinom.ControlPanel.Controllers
                 client.DefaultRequestHeaders.Authorization = 
                     new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                 
-                return await client.PostAsync(url, new ByteArrayContent(data));
+                return await client.PostAsync($"{url}/{username}/{filename}", new ByteArrayContent(data));
             }
         }
     }

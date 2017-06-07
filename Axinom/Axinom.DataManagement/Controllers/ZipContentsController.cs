@@ -12,15 +12,17 @@ namespace Axinom.DataManagement.Controllers
     {
         private readonly IOptions<AESKey> _aesKey;
         private readonly IDecryptor _decryptor;
+        private readonly IPersistence _persistence;
 
-        public ZipContentsController(IOptions<AESKey> aesKey, IDecryptor decryptor)
+        public ZipContentsController(IOptions<AESKey> aesKey, IDecryptor decryptor, IPersistence persistence)
         {
             _aesKey = aesKey;
             _decryptor = decryptor;
+            _persistence = persistence;
         }
         
-        [HttpPost]
-        public async Task<string> Post()
+        [HttpPost("{id}/{filename}")]
+        public async Task<string> Post(string id, string filename)
         {
             byte[] bytes;
             using (var ms = new MemoryStream())
@@ -30,11 +32,8 @@ namespace Axinom.DataManagement.Controllers
             }
            
             var decr = _decryptor.Decrypt(bytes, _aesKey.Value.Key, _aesKey.Value.IV);
-            // TODO - save to db
-            
+            await _persistence.Save(id, filename, decr);
             return decr;
-            
-            
         }
     }
 }
