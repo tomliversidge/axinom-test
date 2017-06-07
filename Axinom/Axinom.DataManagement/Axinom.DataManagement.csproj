@@ -11,10 +11,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Axinom.Domain\Axinom.Domain.csproj">
-      <Project>{1bb38173-e7bb-4021-90c7-ac48cf449b39}</Project>
-      <Name>Axinom.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Axinom.Encryption\Axinom.Encryption.csproj">
       <Project>{7279422f-7959-4fa8-a856-94d3d5d078c0}</Project>
       <Name>Axinom.Encryption</Name>
