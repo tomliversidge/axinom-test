@@ -3,17 +3,13 @@
 # Running on Windows
 Build by running the build.ps1 script.
 
-run the ControlPanel app through the cmd line:
-
-`set ASPNETCORE_ENVIRONMENT=Development`
-
-in the Axinom.ControlPanel directory run
-
-`dotnet run`
 ## Control Panel App
 In cmd, navigate to the Axinom.ControlPanel directory and run 
+
 `set ASPNETCORE_ENVIRONMENT=Development`
+
 followed by 
+
 `dotnet run`
 
 This should start the server on localhost, port 5001. 
@@ -22,7 +18,9 @@ This should start the server on localhost, port 5001.
 In cmd, navigate to the Axinom.DataManagement directory and run 
 
 `set ASPNETCORE_ENVIRONMENT=Development`
+
 followed by 
+
 `dotnet run`
 
 This should start the server on localhost, port 5002. 
