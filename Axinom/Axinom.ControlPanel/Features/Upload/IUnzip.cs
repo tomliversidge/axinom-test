@@ -7,6 +7,4 @@ namespace Axinom.ControlPanel.Features.Upload
     {
         Task<string> Unzip(IFormFile file);
     }
-    
-
 }

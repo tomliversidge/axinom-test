@@ -32,6 +32,4 @@ namespace Axinom.ControlPanel.Features.Upload
         
         private static bool FilterMacItems(ZipArchiveEntry e) => !e.FullName.StartsWith("__MACOSX") && !e.FullName.EndsWith(".DS_Store");
     }
-    
-
 }

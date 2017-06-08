@@ -2,18 +2,16 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Axinom.ControlPanel.Configuration;
-using Microsoft.Extensions.Options;
 
 namespace Axinom.ControlPanel.Features.Upload
 {
     public class DataManagementWebRequester : IMakeWebRequests
     {
-        private readonly IOptions<DataManagement> _dataManagementOptions;
+        private readonly string _baseUrl;
 
-        public DataManagementWebRequester(IOptions<DataManagement> _dataManagementOptions)
+        public DataManagementWebRequester(string baseUrl)
         {
-            this._dataManagementOptions = _dataManagementOptions;
+            _baseUrl = baseUrl;
         }
 
         public async Task<HttpResponseMessage> Send(EncryptedContent content, string username, string password)
@@ -24,10 +22,8 @@ namespace Axinom.ControlPanel.Features.Upload
                 client.DefaultRequestHeaders.Authorization =
                     new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-                return await client.PostAsync($"{_dataManagementOptions.Value.Url}/{username}/{content.Filename}", new ByteArrayContent(content.Data));
+                return await client.PostAsync($"{_baseUrl}/{username}/{content.Filename}", new ByteArrayContent(content.Data));
             }
         }
     }
-    
-
 }

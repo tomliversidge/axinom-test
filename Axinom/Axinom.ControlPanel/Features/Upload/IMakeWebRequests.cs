@@ -7,6 +7,4 @@ namespace Axinom.ControlPanel.Features.Upload
     {
         Task<HttpResponseMessage> Send(EncryptedContent content, string username, string password);
     }
-    
-
 }

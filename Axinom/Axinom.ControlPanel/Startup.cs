@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Axinom.ControlPanel.Configuration;
 using Axinom.ControlPanel.Features.Upload;
 using Axinom.Encryption;
 using MediatR;
@@ -36,14 +35,11 @@ namespace Axinom.ControlPanel
             {
                 o.ViewLocationExpanders.Add(new FeatureFolderViewExpander());
             });
-            services.Configure<AESKey>(Configuration.GetSection("Secrets:AESKey"));
-            services.Configure<DataManagement>(Configuration.GetSection("DataManagement"));
             services.AddSingleton<ISaveFiles>(new FileSaver(Configuration["FileSystem:Root"]));
             services.AddSingleton<IEncrypt>(new AESEncryptor(Configuration["Secrets:AESKey:Key"], Configuration["Secrets:AESKey:IV"]));
             services.AddSingleton<IUnzip, Unzipper>();
-            services.AddSingleton<IMakeWebRequests, DataManagementWebRequester>();
+            services.AddSingleton<IMakeWebRequests>(new DataManagementWebRequester(Configuration["DataManagement:Url"]));
             services.AddMediatR();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
