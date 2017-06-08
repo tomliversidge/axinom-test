@@ -31,6 +31,7 @@ namespace Axinom.DataManagement
             services.Configure<DataManagementCredentials>(Configuration.GetSection("Secrets:DataManagementCredentials"));
             services.Configure<AESKey>(Configuration.GetSection("Secrets:AESKey"));
             services.AddSingleton<IDecryptor, AESDecryptor>();
+            services.AddSingleton<IPersistence>(new FileSystemPersistence(Configuration["FileSystem:Root"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

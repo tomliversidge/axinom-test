@@ -30,7 +30,7 @@ namespace Axinom.DataManagement.Tests
                 client.DefaultRequestHeaders.Authorization = 
                     new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                
-                var response = await client.PostAsync("/api/zipcontents", byteContent);
+                var response = await client.PostAsync("/api/zipcontents/tom/file1.zip", byteContent);
                 var result = await response.Content.ReadAsStringAsync();
                 result.ShouldBe("some string here");
             }
