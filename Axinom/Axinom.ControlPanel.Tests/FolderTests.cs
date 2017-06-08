@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Axinom.ControlPanel.Tests
 {
-    public class FolerTests
+    public class FolderTests
     {
         [Fact]
         public void can_convert_file_paths_to_object_hierarchy()

@@ -3,9 +3,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Axinom.ControlPanel.Controllers
+namespace Axinom.ControlPanel.Features.Upload
 {
     public class UploadModel : IRequest<HttpResponseMessage>
     {
@@ -27,7 +26,6 @@ namespace Axinom.ControlPanel.Controllers
                 Console.WriteLine(file);
                 if (file.FileName.EndsWith(".zip"))
                     return ValidationResult.Success;
-               
             }
             return new ValidationResult("Files must be in .zip format");
         }

@@ -4,12 +4,20 @@ using System.Security.Cryptography;
 
 namespace Axinom.Encryption
 {
-    public class AESDecryptor : IDecryptor
+    public class AESDecryptor : IDecrypt
     {
-        public string Decrypt(byte[] data, string key, string iv)
+        private readonly string _key;
+        private readonly string _iv;
+
+        public AESDecryptor(string key, string iv)
         {
-            var ivAes = Convert.FromBase64String(iv);
-            var keyAes = Convert.FromBase64String(key);
+            _key = key;
+            _iv = iv;
+        }
+        public string Decrypt(byte[] data)
+        {
+            var ivAes = Convert.FromBase64String(_iv);
+            var keyAes = Convert.FromBase64String(_key);
             string result;
             using (var aes = Aes.Create())
             {

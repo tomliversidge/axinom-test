@@ -9,14 +9,13 @@ namespace Axinom.Encryption.Tests
         [Fact]
         public void can_encrypt_and_decrypt_using_aes()
         {
-            var encryptor = new AESEncryptor();
-            var encr = encryptor.Encrypt("some string", "SBcvpEo21MnyWamdiPxf1O+kBKk53s5GWRnrv3JoUVQ=", "vLWsT81pAOlk7hKd4cyz5A==");
+            var encryptor = new AESEncryptor("SBcvpEo21MnyWamdiPxf1O+kBKk53s5GWRnrv3JoUVQ=", "vLWsT81pAOlk7hKd4cyz5A==");
+            var encr = encryptor.Encrypt("some string");
 
             var stringy = Convert.ToBase64String(encr);
-            var decryptor = new AESDecryptor();
-            var decr = decryptor.Decrypt(encr, "SBcvpEo21MnyWamdiPxf1O+kBKk53s5GWRnrv3JoUVQ=", "vLWsT81pAOlk7hKd4cyz5A==");
+            var decryptor = new AESDecryptor("SBcvpEo21MnyWamdiPxf1O+kBKk53s5GWRnrv3JoUVQ=", "vLWsT81pAOlk7hKd4cyz5A==");
+            var decr = decryptor.Decrypt(encr);
             decr.ShouldBe("some string");
-
         }
     }
 }

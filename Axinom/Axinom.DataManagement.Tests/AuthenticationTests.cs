@@ -19,8 +19,7 @@ namespace Axinom.DataManagement.Tests
                 .UseStartup<Startup>()
                 .UseEnvironment("Development"));
 
-            var bytes = new AESEncryptor().Encrypt("some string here", "SBcvpEo21MnyWamdiPxf1O+kBKk53s5GWRnrv3JoUVQ=",
-                "vLWsT81pAOlk7hKd4cyz5A==");
+            var bytes = new AESEncryptor("SBcvpEo21MnyWamdiPxf1O+kBKk53s5GWRnrv3JoUVQ=", "vLWsT81pAOlk7hKd4cyz5A==").Encrypt("some string here");
            
             ByteArrayContent byteContent = new ByteArrayContent(bytes);
             

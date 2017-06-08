@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
 
 namespace Axinom.DataManagement
 {
-    public class FileSystemPersistence : IPersistence {
+    public class FileSystemPersistence : IPersist {
         private readonly string _root;
 
         public FileSystemPersistence(string root)

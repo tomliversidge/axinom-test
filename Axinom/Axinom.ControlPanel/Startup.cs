@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Axinom.ControlPanel.Configuration;
-using Axinom.ControlPanel.Controllers;
+using Axinom.ControlPanel.Features.Upload;
 using Axinom.Encryption;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -32,9 +32,18 @@ namespace Axinom.ControlPanel
         {
             // Add framework services.
             services.AddMvc();
+            services.Configure<RazorViewEngineOptions>(o =>
+            {
+                o.ViewLocationExpanders.Add(new FeatureFolderViewExpander());
+            });
             services.Configure<AESKey>(Configuration.GetSection("Secrets:AESKey"));
             services.Configure<DataManagement>(Configuration.GetSection("DataManagement"));
-            services.AddSingleton<IEncryptor, AESEncryptor>();
+            services.AddSingleton<ISaveFiles>(new FileSaver(Configuration["FileSystem:Root"]));
+            services.AddSingleton<IEncrypt>(new AESEncryptor(Configuration["Secrets:AESKey:Key"], Configuration["Secrets:AESKey:IV"]));
+            services.AddSingleton<IUnzip, Unzipper>();
+            services.AddSingleton<IMakeWebRequests, DataManagementWebRequester>();
+            services.AddMediatR();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +70,19 @@ namespace Axinom.ControlPanel
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+    }
+
+    public class FeatureFolderViewExpander : IViewLocationExpander
+    {
+        public void PopulateValues(ViewLocationExpanderContext context)
+        {
+            
+        }
+
+        public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
+        {
+            return viewLocations.Select(f => f.Replace("/Views/", "/Features/"));
         }
     }
 }

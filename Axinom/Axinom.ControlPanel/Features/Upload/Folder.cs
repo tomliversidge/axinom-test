@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Axinom.ControlPanel
+namespace Axinom.ControlPanel.Features.Upload
 {
     public class Folder
     {

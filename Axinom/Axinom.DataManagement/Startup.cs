@@ -1,5 +1,4 @@
-﻿using System;
-using Axinom.DataManagement.Configuration;
+﻿using Axinom.DataManagement.Configuration;
 using Axinom.Encryption;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,8 +29,8 @@ namespace Axinom.DataManagement
             services.AddMvc();
             services.Configure<DataManagementCredentials>(Configuration.GetSection("Secrets:DataManagementCredentials"));
             services.Configure<AESKey>(Configuration.GetSection("Secrets:AESKey"));
-            services.AddSingleton<IDecryptor, AESDecryptor>();
-            services.AddSingleton<IPersistence>(new FileSystemPersistence(Configuration["FileSystem:Root"]));
+            services.AddSingleton<IDecrypt>(new AESDecryptor(Configuration["Secrets:AESKey:Key"], Configuration["Secrets:AESKey:IV"]));
+            services.AddSingleton<IPersist>(new FileSystemPersistence(Configuration["FileSystem:Root"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,9 +38,9 @@ namespace Axinom.DataManagement
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            
             app.UseMiddleware<BasicAuthenticationMiddleware>();
             app.UseMvc();
-            
         }
     }
 }

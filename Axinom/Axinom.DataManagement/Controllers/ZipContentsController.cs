@@ -1,24 +1,20 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-using Axinom.DataManagement.Configuration;
 using Axinom.Encryption;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace Axinom.DataManagement.Controllers
 {
     [Route("api/[controller]")]
     public class ZipContentsController : Controller
     {
-        private readonly IOptions<AESKey> _aesKey;
-        private readonly IDecryptor _decryptor;
-        private readonly IPersistence _persistence;
+        private readonly IDecrypt _decryptor;
+        private readonly IPersist _persistor;
 
-        public ZipContentsController(IOptions<AESKey> aesKey, IDecryptor decryptor, IPersistence persistence)
+        public ZipContentsController(IDecrypt decryptor, IPersist persistor)
         {
-            _aesKey = aesKey;
             _decryptor = decryptor;
-            _persistence = persistence;
+            _persistor = persistor;
         }
         
         [HttpPost("{id}/{filename}")]
@@ -31,8 +27,8 @@ namespace Axinom.DataManagement.Controllers
                 bytes = ms.ToArray();
             }
            
-            var decr = _decryptor.Decrypt(bytes, _aesKey.Value.Key, _aesKey.Value.IV);
-            await _persistence.Save(id, filename, decr);
+            var decr = _decryptor.Decrypt(bytes);
+            await _persistor.Save(id, filename, decr);
             return decr;
         }
     }
